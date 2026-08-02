@@ -361,10 +361,6 @@ onUnmounted(() => {
 
     <div class="photo-pair">
       <figure class="inline-photo">
-        <img src="/images/1948-President-BRETAUD.png" alt="Le président Théo Bretaud avec son comité directeur" />
-        <figcaption>Le président Théo Bretaud avec son comité directeur</figcaption>
-      </figure>
-      <figure class="inline-photo">
         <img src="/images/ASB-4950.png" alt="Association Sportive Béziers (1949-1950)" />
         <figcaption>Association Sportive Béziers (1949 - 1950)</figcaption>
       </figure>
@@ -473,10 +469,6 @@ onUnmounted(() => {
       <figure class="inline-photo">
         <img src="/images/ASB-5758.png" alt="Association Sportive Béziers (1957-1958)" />
         <figcaption>Association Sportive Béziers (1957 - 1958)</figcaption>
-      </figure>
-      <figure class="inline-photo">
-        <img src="/images/d1.png" alt="Classement Division 1 (1957-1958)" />
-        <figcaption>Classement Division 1 (1957 - 1958)</figcaption>
       </figure>
     </div>
 
@@ -1536,6 +1528,15 @@ onUnmounted(() => {
   .carousel-item {
     margin: 0 auto;
     max-width: 220px;
+    height: 260px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  .carousel-item img {
+    height: 200px;
+    width: auto;
+    max-width: 100%;
   }
   .photo-pair {
     flex-direction: column;
@@ -1547,5 +1548,15 @@ onUnmounted(() => {
   .text-photo-row .big-photo img {
     max-height: 400px;
   }
+
+  .carousel {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+  margin: 2.5rem 0 1rem;
+  overflow-anchor: none;
+}
+
 }
 </style>
