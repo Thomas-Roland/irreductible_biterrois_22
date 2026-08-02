@@ -25,6 +25,10 @@ const logos = [
   { img: '/images/logo9.png', caption: 'Avenir Sportif Béziers (2007-..)' },
 ]
 
+function img(path) {
+  return import.meta.env.BASE_URL + path.replace(/^\//, '')
+}
+
 const VISIBLE = 3
 const startIndex = ref(0)
 const AUTO_SCROLL_DELAY = 4000
@@ -138,7 +142,7 @@ onUnmounted(() => {
 
       <div class="carousel-track">
         <div v-for="logo in visibleLogos" :key="logo.img" class="carousel-item">
-          <img :src="logo.img" :alt="logo.caption" />
+        <img :src="img(logo.img)" :alt="logo.caption" />
           <p class="carousel-caption">{{ logo.caption }}</p>
         </div>
       </div>

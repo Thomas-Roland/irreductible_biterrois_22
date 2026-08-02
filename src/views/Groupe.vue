@@ -32,6 +32,11 @@ const timelineSteps = [
   { year: '2021', text: "Dissolution de l'association Les amis de l'ASB" },
   { year: '2022', text: 'Création de l\u2019association Irréductibles Biterrois 22' },
 ]
+
+function img(path) {
+  return import.meta.env.BASE_URL + path.replace(/^\//, '')
+}
+
 </script>
 
 <template>
@@ -45,7 +50,7 @@ const timelineSteps = [
       class="chapter"
       :class="{ reverse: c.reverse }"
     >
-      <img class="chapter-media" :src="c.img" :alt="c.title" />
+<img class="chapter-media" :src="img(c.img)" :alt="c.title" />
       <div class="chapter-text">
         <p v-if="c.label" class="chapter-label">{{ c.label }}</p>
         <h2>{{ c.title }}</h2>
@@ -63,7 +68,7 @@ const timelineSteps = [
           </li>
         </ol>
       </div>
-      <img class="chapter-media" src="/images/4.png" alt="Chronologie du groupe" />
+      <img class="chapter-media" :src="img('/images/4.png')" alt="Chronologie du groupe" />
     </section>
 
     <!-- HISTORIQUE -->
@@ -79,12 +84,12 @@ const timelineSteps = [
           des Amis de l'ASB, inactif depuis 2020.
         </p>
       </div>
-      <img class="chapter-media" src="/images/5.jpg" alt="Historique du groupe" />
+      <img class="chapter-media" :src="img('/images/5.jpg')" alt="Historique du groupe" />
     </section>
 
     <!-- NOS VALEURS -->
     <section class="chapter">
-      <img class="chapter-media" src="/images/6.png" alt="Nos valeurs" />
+      <img class="chapter-media" :src="img('/images/6.png')" alt="Nos valeurs" />
       <div class="chapter-text">
         <h2>NOS VALEURS</h2>
         <p>
@@ -113,7 +118,7 @@ const timelineSteps = [
 
     <!-- BANNIÈRE ABONNEMENT -->
     <section class="banner-section">
-      <img class="banner" src="/images/REJOINT-NOUS.png" alt="Rejoignez-nous - Irréductible Biterrois 22" />
+      <img class="banner" :src="img('/images/REJOINT-NOUS.png')" alt="Rejoignez-nous - Irréductible Biterrois 22" />
     </section>
 
     <!-- RETOUR -->

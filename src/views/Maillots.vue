@@ -3,6 +3,10 @@ import { useRoute } from 'vue-router'
 
 const route = useRoute()
 
+function img(path) {
+  return import.meta.env.BASE_URL + path.replace(/^\//, '')
+}
+
 // 👉 Menu de navigation en haut de page (identique aux autres pages)
 const navItems = [
   { label: "L'histoire", path: '/musee-de-lasb', icon: 'book' },
@@ -78,7 +82,7 @@ const maillots = [
       <div class="maillot-empty"></div>
 
       <figure class="maillot-photo">
-        <img :src="maillot.img" :alt="maillot.caption" />
+<img :src="img(maillot.img)" :alt="maillot.caption" />
         <figcaption>{{ maillot.caption }}</figcaption>
       </figure>
     </div>
