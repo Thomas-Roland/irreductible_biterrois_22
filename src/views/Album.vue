@@ -377,7 +377,7 @@ onUnmounted(() => {
       <strong>Stade de Sauclières</strong> une grande affluence de sportifs.
     </p>
 
-    <div class="photo-pair">
+    <div class="photo-pair full-image">
       <figure class="inline-photo">
         <img src="/images/ASB-4950.png" alt="Association Sportive Béziers (1949-1950)" />
         <figcaption>Association Sportive Béziers (1949 - 1950)</figcaption>
@@ -483,7 +483,7 @@ onUnmounted(() => {
       reléguée en <strong>deuxième division</strong>.
     </p>
 
-    <div class="photo-pair">
+    <div class="photo-pair full-image">
       <figure class="inline-photo">
         <img src="/images/ASB-5758.png" alt="Association Sportive Béziers (1957-1958)" />
         <figcaption>Association Sportive Béziers (1957 - 1958)</figcaption>
@@ -740,10 +740,6 @@ onUnmounted(() => {
           Béziers</strong>, <strong>Gérard Jullien</strong>.
         </p>
       </div>
-      <figure class="inline-photo">
-        <img src="/images/D3-1972-73.png" alt="Classement Division 3 (1972-1973)" />
-        <figcaption>Classement Division 3 (1972 - 1973)</figcaption>
-      </figure>
     </div>
 
     <hr />
@@ -1034,11 +1030,7 @@ onUnmounted(() => {
       <strong>National</strong> pour la première fois de son histoire.
     </p>
 
-    <div class="photo-pair">
-      <figure class="inline-photo">
-        <img src="/images/CFA-201415.png" alt="Classement CFA (2014-2015)" />
-        <figcaption>Classement CFA (2014 - 2015)</figcaption>
-      </figure>
+    <div class="photo-pair full-image">
       <figure class="inline-photo">
         <img src="/images/montee_en_N1.jpg" alt="Michel Ramon, Kévin Fortune, Mahamadou Drame" />
         <figcaption>Michel Ramon, Kévin Fortune, ..., ... et Mahamadou Drame</figcaption>
@@ -1136,10 +1128,6 @@ onUnmounted(() => {
     </p>
 
     <div class="photo-pair">
-      <figure class="inline-photo">
-        <img src="/images/classement_N1.png" alt="Classement figé de la saison 2019-2020 de National 1" />
-        <figcaption>Classement figé de la saison 2019-2020 de National 1</figcaption>
-      </figure>
       <figure class="inline-photo">
         <img src="/images/mostefa.jpg" alt="Mehdi Mostefa avant Béziers-Laval (2019-2020)" />
         <figcaption>Mehdi Mostefa avant Béziers-Laval (2019 - 2020)</figcaption>
