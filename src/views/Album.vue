@@ -30,27 +30,33 @@ function img(path) {
   return import.meta.env.BASE_URL + path.replace(/^\//, '')
 }
 
-const VISIBLE = 3
+// 👉 Nombre de logos visibles : 1 sur mobile (≤800px), 3 sur ordinateur
+const VISIBLE = ref(window.innerWidth <= 800 ? 1 : 3)
+
+function updateVisibleCount() {
+  VISIBLE.value = window.innerWidth <= 800 ? 1 : 3
+}
+
 const startIndex = ref(0)
 const AUTO_SCROLL_DELAY = 4000
 let autoScrollTimer = null
 
-const visibleLogos = computed(() => logos.slice(startIndex.value, startIndex.value + VISIBLE))
+const visibleLogos = computed(() => logos.slice(startIndex.value, startIndex.value + VISIBLE.value))
 
 function prevLogo() {
   startIndex.value = startIndex.value === 0
-    ? logos.length - VISIBLE
+    ? logos.length - VISIBLE.value
     : startIndex.value - 1
 }
 
 function nextLogo() {
-  startIndex.value = startIndex.value >= logos.length - VISIBLE
+  startIndex.value = startIndex.value >= logos.length - VISIBLE.value
     ? 0
     : startIndex.value + 1
 }
 
 function goTo(i) {
-  startIndex.value = Math.min(Math.max(0, i - 1), Math.max(0, logos.length - VISIBLE))
+  startIndex.value = Math.min(Math.max(0, i - 1), Math.max(0, logos.length - VISIBLE.value))
 }
 
 function startAutoScroll() {
@@ -73,10 +79,12 @@ function handleManualNav(action) {
 }
 
 onMounted(() => {
+  window.addEventListener('resize', updateVisibleCount)
   startAutoScroll()
 })
 
 onUnmounted(() => {
+  window.removeEventListener('resize', updateVisibleCount)
   stopAutoScroll()
 })
 </script>
@@ -133,7 +141,7 @@ onUnmounted(() => {
       Revivez plus d'un siècle de passion, de défis et d'évolution du ballon rond à Béziers.
     </p>
 
-    <!-- CARROUSEL DE LOGOS (3 par 3, défilement auto) -->
+<!-- CARROUSEL DE LOGOS (3 par 3 sur ordinateur, 1 par 1 sur mobile, défilement auto) -->
 <div class="carousel" @mouseenter="stopAutoScroll" @mouseleave="startAutoScroll">
   <button
     class="arrow arrow-left"
@@ -160,7 +168,7 @@ onUnmounted(() => {
     v-for="(l, i) in logos"
     :key="i"
     class="dot"
-    :class="{ active: i >= startIndex && i < startIndex + VISIBLE }"
+    :class="{ active: i >= startIndex && i < startIndex + VISIBLE.value }"
     @click="handleManualNav(() => goTo(i))"
     :aria-label="'Aller au logo ' + (i + 1)"
   ></button>
@@ -1523,6 +1531,11 @@ onUnmounted(() => {
   }
   .carousel-track {
     flex-direction: column;
+    align-items: center;
+  }
+  .carousel-item {
+    margin: 0 auto;
+    max-width: 220px;
   }
   .photo-pair {
     flex-direction: column;
