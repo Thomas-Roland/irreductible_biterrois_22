@@ -6,6 +6,7 @@ import vueDevTools from 'vite-plugin-vue-devtools'
 
 // https://vite.dev/config/
 export default defineConfig({
+  base: '/irreductible_biterrois_22/',
   plugins: [
     vue(),
     vueDevTools(),
