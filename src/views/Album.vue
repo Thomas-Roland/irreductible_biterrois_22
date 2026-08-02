@@ -41,6 +41,10 @@ const startIndex = ref(0)
 const AUTO_SCROLL_DELAY = 4000
 let autoScrollTimer = null
 
+// 👉 Référence DOM sur le conteneur du carrousel (pour l'IntersectionObserver)
+const carouselRef = ref(null)
+let observer = null
+
 const visibleLogos = computed(() => logos.slice(startIndex.value, startIndex.value + VISIBLE.value))
 
 function prevLogo() {
@@ -80,12 +84,26 @@ function handleManualNav(action) {
 
 onMounted(() => {
   window.addEventListener('resize', updateVisibleCount)
-  startAutoScroll()
+
+  // 👉 Le défilement auto ne tourne que quand le carrousel est visible à l'écran
+  // (évite le micro-saut de scroll quand il change hors du champ de vision)
+  observer = new IntersectionObserver(([entry]) => {
+    if (entry.isIntersecting) {
+      startAutoScroll()
+    } else {
+      stopAutoScroll()
+    }
+  }, { threshold: 0.3 })
+
+  if (carouselRef.value) {
+    observer.observe(carouselRef.value)
+  }
 })
 
 onUnmounted(() => {
   window.removeEventListener('resize', updateVisibleCount)
   stopAutoScroll()
+  if (observer) observer.disconnect()
 })
 </script>
 
@@ -142,7 +160,7 @@ onUnmounted(() => {
     </p>
 
 <!-- CARROUSEL DE LOGOS (3 par 3 sur ordinateur, 1 par 1 sur mobile, défilement auto) -->
-<div class="carousel" @mouseenter="stopAutoScroll" @mouseleave="startAutoScroll">
+<div class="carousel" ref="carouselRef" @mouseenter="stopAutoScroll" @mouseleave="startAutoScroll">
   <button
     class="arrow arrow-left"
     @click="handleManualNav(prevLogo)"
