@@ -6,7 +6,7 @@ const route = useRoute()
 
 // 👉 Menu de navigation en haut de page
 const navItems = [
-  { label: "L'histoire", path: '/album', icon: 'book' },
+  { label: "L'histoire", path: '/musee-de-lasb', icon: 'book' },
   { label: 'Les maillots', path: '/maillots', icon: 'shirt' },
   { label: 'Palmarès', path: '/palmares', icon: 'trophy' },
   { label: 'Le projet', path: '/projet', icon: 'scroll' },
@@ -25,6 +25,7 @@ const logos = [
   { img: '/images/logo9.png', caption: 'Avenir Sportif Béziers (2007-..)' },
 ]
 
+// 👉 Ajoute le préfixe correct (BASE_URL) devant chaque chemin d'image
 function img(path) {
   return import.meta.env.BASE_URL + path.replace(/^\//, '')
 }
@@ -133,39 +134,39 @@ onUnmounted(() => {
     </p>
 
     <!-- CARROUSEL DE LOGOS (3 par 3, défilement auto) -->
-    <div class="carousel" @mouseenter="stopAutoScroll" @mouseleave="startAutoScroll">
-      <button
-        class="arrow arrow-left"
-        @click="handleManualNav(prevLogo)"
-        aria-label="Précédent"
-      >‹</button>
+<div class="carousel" @mouseenter="stopAutoScroll" @mouseleave="startAutoScroll">
+  <button
+    class="arrow arrow-left"
+    @click="handleManualNav(prevLogo)"
+    aria-label="Précédent"
+  >‹</button>
 
-      <div class="carousel-track">
-        <div v-for="logo in visibleLogos" :key="logo.img" class="carousel-item">
-        <img :src="img(logo.img)" :alt="logo.caption" />
-          <p class="carousel-caption">{{ logo.caption }}</p>
-        </div>
-      </div>
-
-      <button
-        class="arrow arrow-right"
-        @click="handleManualNav(nextLogo)"
-        aria-label="Suivant"
-      >›</button>
+  <div class="carousel-track">
+    <div v-for="logo in visibleLogos" :key="logo.img" class="carousel-item">
+      <img :src="img(logo.img)" :alt="logo.caption" />
+      <p class="carousel-caption">{{ logo.caption }}</p>
     </div>
+  </div>
 
-    <div class="carousel-dots">
-      <button
-        v-for="(l, i) in logos"
-        :key="i"
-        class="dot"
-        :class="{ active: i >= startIndex && i < startIndex + VISIBLE }"
-        @click="handleManualNav(() => goTo(i))"
-        :aria-label="'Aller au logo ' + (i + 1)"
-      ></button>
-    </div>
+  <button
+    class="arrow arrow-right"
+    @click="handleManualNav(nextLogo)"
+    aria-label="Suivant"
+  >›</button>
+</div>
 
-    <hr />
+<div class="carousel-dots">
+  <button
+    v-for="(l, i) in logos"
+    :key="i"
+    class="dot"
+    :class="{ active: i >= startIndex && i < startIndex + VISIBLE }"
+    @click="handleManualNav(() => goTo(i))"
+    :aria-label="'Aller au logo ' + (i + 1)"
+  ></button>
+</div>
+
+<hr />
 
     <!-- SECTION 1903-1914 -->
     <h2>QUAND LE BALLON ROND PREND RACINE À BÉZIERS (1903 - 1914)</h2>
