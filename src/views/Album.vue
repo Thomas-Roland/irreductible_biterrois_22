@@ -955,16 +955,16 @@ onUnmounted(() => {
       engagé. Il ne se concrétisera une année plus tard.
     </p>
 
-    <div class="photo-pair full-image">
-      <figure class="inline-photo">
-        <img src="/images/ASB_2_0607.png" alt="Avenir Sportif Béziers 2 (2006-2007)" />
-        <figcaption>Avenir Sportif Béziers 2 (2006 - 2007)</figcaption>
-      </figure>
-      <figure class="inline-photo">
-        <img src="/images/FC_Beziers_M-0607.png" alt="Football Club Béziers Méditerranée (2006-2007)" />
-        <figcaption>Football Club Béziers Méditerranée (2006 - 2007)</figcaption>
-      </figure>
-    </div>
+    <div class="photo-stack">
+  <figure class="inline-photo">
+    <img src="/images/ASB_2_0607.png" alt="Avenir Sportif Béziers 2 (2006-2007)" />
+    <figcaption>Avenir Sportif Béziers 2 (2006 - 2007)</figcaption>
+  </figure>
+  <figure class="inline-photo">
+    <img src="/images/FC_Beziers_M-0607.png" alt="Football Club Béziers Méditerranée (2006-2007)" />
+    <figcaption>Football Club Béziers Méditerranée (2006 - 2007)</figcaption>
+  </figure>
+</div>
 
     <hr />
 
@@ -1436,12 +1436,35 @@ onUnmounted(() => {
   object-position: top center;
 }
 
-/* Variante : images affichées ENTIÈRES, sans rognage */
+/* Variante : images affichées ENTIÈRES, sans rognage (une seule règle, plus de doublon) */
 .photo-pair.full-image .inline-photo img {
   height: 420px;
   object-fit: contain;
-  background-color: #f2f2f2;
-  border: 1px solid #ddd;
+  background-color: transparent;
+  border: none;
+}
+
+/* Empile deux photos l'une au-dessus de l'autre, chacune affichée entière */
+.photo-stack {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+  margin: 1.5rem 0;
+}
+
+.photo-stack .inline-photo {
+  margin: 0;
+  width: 100%;
+  max-width: 700px;
+}
+
+.photo-stack .inline-photo img {
+  width: 100%;
+  height: auto;
+  max-height: 500px;
+  object-fit: contain;
+  border-radius: 6px;
 }
 
 /* BLOC : TEXTE + PHOTO CÔTE À CÔTE (ordre = ordre dans le HTML) */
@@ -1554,8 +1577,7 @@ onUnmounted(() => {
   .text-photo-row .big-photo img {
     max-height: 400px;
   }
-
- .photo-pair.full-image .inline-photo img {
+  .photo-pair.full-image .inline-photo img {
     height: auto;
     max-height: none;
     background-color: transparent;
