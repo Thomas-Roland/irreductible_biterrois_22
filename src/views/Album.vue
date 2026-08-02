@@ -1467,7 +1467,7 @@ onUnmounted(() => {
   border-radius: 6px;
 }
 
-/* BLOC : TEXTE + PHOTO CÔTE À CÔTE (ordre = ordre dans le HTML) */
+/* BLOC : TEXTE + PHOTO CÔTE À CÔTÉ (ordre = ordre dans le HTML) */
 .text-photo-side {
   display: flex;
   gap: 2.5rem;

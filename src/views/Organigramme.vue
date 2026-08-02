@@ -154,5 +154,9 @@ const membres = [
   .organigramme-page {
     padding: 2rem 1.5rem;
   }
+  .page-title {
+    font-size: 2rem;
+    padding-bottom: 2rem;
+  }
 }
 </style>

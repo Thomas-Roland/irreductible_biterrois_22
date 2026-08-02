@@ -21,7 +21,7 @@
           dans un cadre familial où tout le monde est le bienvenu.
         </p>
         <p>Pour tous renseignements, n'hésitez pas à nous contacter via la page contact.</p>
-        <a href="/contact" class="btn-adherer">✋ Adhérer</a>
+        <router-link to="/contact" class="btn-adherer">✋ Adhérer</router-link>
       </div>
     </section>
 

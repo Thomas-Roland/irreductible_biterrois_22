@@ -38,7 +38,7 @@ const schedule = [
         <router-link to="/">Accueil</router-link>
         <router-link to="/groupe">Le groupe</router-link>
         <router-link to="/organigramme">Organigramme</router-link>
-        <router-link to="/album">Album photo</router-link>
+        <router-link to="/album">Musée du Foot</router-link>
         <router-link to="/contact">Contact</router-link>
       </div>
       <div class="footer-col">
