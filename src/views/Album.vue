@@ -1555,14 +1555,11 @@ onUnmounted(() => {
     max-height: 400px;
   }
 
-  .carousel {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 2rem;
-  margin: 2.5rem 0 1rem;
-  overflow-anchor: none;
-}
-
+ .photo-pair.full-image .inline-photo img {
+    height: auto;
+    max-height: none;
+    background-color: transparent;
+    border: none;
+  }
 }
 </style>
